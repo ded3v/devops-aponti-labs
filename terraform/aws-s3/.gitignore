@@ -1,0 +1,19 @@
+# Diretório local criado pelo Terraform
+.terraform/
+
+# Arquivos de estado
+*.tfstate
+*.tfstate.*
+
+# Arquivos de plano
+*.tfplan
+tfplan
+
+# Arquivos temporários
+crash.log
+crash.*.log
+.terraform.tfstate.lock.info
+
+# Arquivos de credenciais não devem ser enviados ao GitHub
+.aws/
+credentials
