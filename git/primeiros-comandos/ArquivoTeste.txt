@@ -1,0 +1,1 @@
+Testando comandos iniciais usando git-auto.sh
