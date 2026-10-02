@@ -1,0 +1,1 @@
+Arquivo utilizado para demonstrar a instrução ADD no Dockerfile.
