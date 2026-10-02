@@ -1,0 +1,9 @@
+{
+  "name": "atividade-dockerfile",
+  "version": "1.0.0",
+  "description": "Projeto de exemplo para estudo de Dockerfile",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
