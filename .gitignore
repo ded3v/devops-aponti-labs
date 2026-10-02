@@ -1,0 +1,12 @@
+**/node_modules/
+**/.vagrant/
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+.env
+.env.*
+!.env.example
+**/__pycache__/
+.DS_Store
+Thumbs.db
