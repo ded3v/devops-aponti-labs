@@ -1,0 +1,24 @@
+# Diretório local criado pelo Terraform.
+.terraform/
+
+# Arquivos de estado do Terraform não devem ser versionados neste exercício.
+*.tfstate
+*.tfstate.*
+
+# Arquivos de plano gerados localmente.
+*.tfplan
+tfplan
+
+# Arquivos temporários e de erro do Terraform.
+crash.log
+crash.*.log
+.terraform.tfstate.lock.info
+
+# Arquivos que podem conter credenciais da Google Cloud.
+*.json
+application_default_credentials.json
+
+# Arquivos locais do sistema e do editor.
+.DS_Store
+Thumbs.db
+.vscode/
