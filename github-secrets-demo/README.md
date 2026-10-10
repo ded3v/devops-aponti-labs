@@ -52,7 +52,7 @@ Secret recebido pela aplicação com sucesso.
 
 Se o Secret estiver ausente ou vazio, a aplicação termina com erro. Isso evita que a pipeline passe sem receber a configuração necessária.
 
-A execução no GitHub ainda precisa ser concluída para finalizar a entrega. O registro deve ser adicionado em `docs/EVIDENCIAS.md`.
+A execução no GitHub foi concluída com sucesso em 10/10/2026. A aplicação confirmou o recebimento e o valor ficou mascarado nos logs. O link e o resultado estão em `docs/EVIDENCIAS.md`.
 
 ## Documentação
 

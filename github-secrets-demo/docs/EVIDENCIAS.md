@@ -1,12 +1,27 @@
 # Evidência da pipeline
 
-A execução no GitHub está pendente. Depois de configurar o Secret e concluir a pipeline, registre aqui:
+A pipeline foi executada em 10/10/2026, às 16:42 no horário de Brasília, após o envio dos commits para main.
 
-- Link da execução na aba Actions.
-- Resultado da execução.
-- Data do teste.
-- Confirmação de que a etapa da aplicação exibiu somente a mensagem de recebimento.
+- Workflow: **GitHub Secrets - demonstração**.
+- Job: `executar`.
+- Resultado: **Success**.
+- Commit: `aafadd8d91bb6c68d1894ba55de57490086c069d`.
+- [Link da execução](https://github.com/ded3v/devops-aponti-labs/actions/runs/38080865458).
 
-A mensagem esperada é `Secret recebido pela aplicação com sucesso.`. Confira os logs antes de registrar o resultado. Não inclua o valor do Secret na documentação nem em prints.
+As etapas de checkout, configuração do Node.js, instalação das dependências e execução da aplicação passaram.
 
-Esse registro completa a evidência solicitada no enunciado. Os testes locais, sozinhos, não comprovam o uso do GitHub Secrets.
+Na etapa **Executar aplicação com o Secret**, o log mostrou a variável mascarada:
+
+```text
+MENSAGEM_SECRETA: ***
+```
+
+A aplicação exibiu:
+
+```text
+Secret recebido pela aplicação com sucesso.
+```
+
+Isso confirma que a variável chegou à aplicação sem que seu valor fosse mostrado nos logs. O workflow contém somente a referência `${{ secrets.MENSAGEM_SECRETA }}`.
+
+A execução apresentou avisos sobre o runtime das actions v4 e uma futura mudança de ubuntu-latest. Esses avisos não impediram a execução. O Node.js configurado para a aplicação foi o 22.

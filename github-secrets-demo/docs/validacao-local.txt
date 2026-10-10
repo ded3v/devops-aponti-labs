@@ -8,4 +8,4 @@ PASSOU: variável preenchida permite execução, sem exibir o valor ou seu taman
 PASSOU: workflow usa referência ao Secret, sem o valor literal da base.
 
 Estes testes usaram apenas valores fictícios locais. Não foi utilizado um GitHub Secret real.
-A configuração do Secret e a execução da pipeline no GitHub ainda estão pendentes.
+Atualização: a pipeline foi executada com sucesso no GitHub em 10/10/2026. Consulte docs/EVIDENCIAS.md.

@@ -70,7 +70,7 @@ Porque o arquivo é versionado. Quem tiver acesso ao código ou ao histórico po
 
 ## Validação
 
-As verificações locais estão em `docs/validacao-local.txt`. A execução da pipeline com o Secret cadastrado ainda precisa ser confirmada no GitHub e registrada em `docs/EVIDENCIAS.md`.
+As verificações locais estão em `docs/validacao-local.txt`. A pipeline também passou no GitHub em 10/10/2026, com o Secret cadastrado no Labs. A aplicação confirmou o recebimento e o valor permaneceu mascarado nos logs. O registro está em `docs/EVIDENCIAS.md`.
 
 ## Referências
 
