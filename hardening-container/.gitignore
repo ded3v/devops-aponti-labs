@@ -1,0 +1,8 @@
+# Secrets locais nunca devem entrar no Git.
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
+*.zip
+evidencias-locais/

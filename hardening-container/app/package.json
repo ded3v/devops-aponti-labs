@@ -1,0 +1,9 @@
+{
+  "name": "hardening-container",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Atividade de hardening de containers — DevOps Turma 5",
+  "scripts": {"start": "node server.js"},
+  "engines": {"node": ">=24 <25"},
+  "dependencies": {"mysql2": "3.24.5"}
+}

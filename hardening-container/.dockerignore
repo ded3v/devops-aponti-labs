@@ -1,0 +1,7 @@
+# Lista permitida: impede que secrets e arquivos extras entrem no build.
+**
+!Dockerfile
+!app/
+!app/package.json
+!app/package-lock.json
+!app/server.js

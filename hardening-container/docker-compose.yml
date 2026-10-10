@@ -1,0 +1,76 @@
+name: hardening-container
+services:
+  app:
+    build: .
+    # Para a atividade local, somente a máquina hospedeira acessa a aplicação.
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      DB_HOST: banco
+      DB_USER: ${DB_USER:?Preencha DB_USER no .env}
+      DB_PASSWORD: ${DB_PASSWORD:?Preencha DB_PASSWORD no .env}
+      DB_NAME: ${DB_NAME:?Preencha DB_NAME no .env}
+    depends_on:
+      banco:
+        condition: service_healthy
+    # Sem capabilities, novos privilégios ou escrita na imagem.
+    user: "1000:1000"
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    read_only: true
+    init: true
+    cpus: "0.50"
+    mem_limit: 256m
+    pids_limit: 100
+    networks: [frontend, backend]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "2"}
+
+  banco:
+    image: mysql:8.4@sha256:6ea90827b1100f8f2ae306a539f86d2c264a26ed435a2a9f75551dd5c3aeb242
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Preencha DB_ROOT_PASSWORD no .env}
+      MYSQL_ROOT_HOST: localhost
+      MYSQL_DATABASE: ${DB_NAME:?Preencha DB_NAME no .env}
+      MYSQL_USER: ${DB_USER:?Preencha DB_USER no .env}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Preencha DB_PASSWORD no .env}
+    # Sem ports: o banco só é acessível na rede Docker interna.
+    volumes:
+      - banco-dados:/var/lib/mysql
+    security_opt: ["no-new-privileges:true"]
+    # O entrypoint oficial precisa preparar permissões e trocar para mysql.
+    cap_drop: [ALL]
+    cap_add: [CHOWN, DAC_OVERRIDE, FOWNER, SETGID, SETUID]
+    cpus: "1.00"
+    mem_limit: 768m
+    pids_limit: 200
+    networks: [backend]
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          MYSQL_PWD="$$MYSQL_PASSWORD" mysql --protocol=TCP -h 127.0.0.1
+          -u "$$MYSQL_USER" -D "$$MYSQL_DATABASE" -e 'SELECT 1' >/dev/null 2>&1
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 60s
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "2"}
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    internal: true
+
+volumes:
+  banco-dados:
