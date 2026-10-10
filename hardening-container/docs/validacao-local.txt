@@ -1,0 +1,20 @@
+VERIFICAÇÕES INICIAIS — 10/10/2026
+
+Base: carlhenriquex/hardening-container, commit 74c1bff84eff7882fd807053180ad37a5b4700ac.
+
+A base possuía package.json vazio. A verificação com Node 24 apontou ERR_INVALID_PACKAGE_CONFIG; a instalação com npm apontou EJSONPARSE. Não foi realizada uma comparação da execução original em containers antes das alterações.
+
+Após as correções, as verificações fora de containers passaram:
+- Validação do Compose e das variáveis do .env.
+- Sintaxe do servidor Node.
+- Rejeição de inicialização sem variáveis obrigatórias.
+- HTTP 200 nas rotas / e /health.
+- HTTP 503 em /ready sem banco disponível, sem exposição de credenciais.
+- HTTP 404 para rota inexistente e 405 para método não permitido.
+- Encerramento do servidor com SIGTERM.
+- .env ignorado pelo Git e .env.example incluído.
+- Senhas locais ausentes dos arquivos destinados ao versionamento.
+- .env.example sem valores preenchidos.
+- npm audit --omit=dev sem vulnerabilidades reportadas na consulta.
+
+Depois, a execução em Docker foi validada no Windows. Foi corrigida a rede da aplicação e todas as verificações de validar.ps1 passaram. Os resultados finais estão em docs/validacao-docker-windows.md.
