@@ -1,0 +1,11 @@
+VERIFICAÇÕES LOCAIS — 10/10/2026
+
+PASSOU: instalação das dependências com npm ci e lockfile.
+PASSOU: actionlint 1.7.7 validou a estrutura e a sintaxe do workflow (sem ShellCheck).
+PASSOU: sintaxe de server.js.
+PASSOU: ausência de configuração encerra a aplicação com código 1.
+PASSOU: variável preenchida permite execução, sem exibir o valor ou seu tamanho.
+PASSOU: workflow usa referência ao Secret, sem o valor literal da base.
+
+Estes testes usaram apenas valores fictícios locais. Não foi utilizado um GitHub Secret real.
+A configuração do Secret e a execução da pipeline no GitHub ainda estão pendentes.
