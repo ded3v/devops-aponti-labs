@@ -70,6 +70,4 @@ minikube service meu-site-service
 
 Nos testes, o Node ficou com status `Ready`, o Pod `meu-site-pod` ficou `Running` e o Service foi criado. Conseguimos abrir a página da aplicação Apache no navegador pelo endereço fornecido pelo Minikube.
 
-Os prints dos comandos e do acesso pelo navegador serão entregues em um PDF separado.
-
 Com a atividade, entendemos melhor a diferença entre Pod e Service e como o Kubernetes usa esses recursos para executar e disponibilizar uma aplicação.
